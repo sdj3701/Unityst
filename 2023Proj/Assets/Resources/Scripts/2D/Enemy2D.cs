@@ -57,7 +57,7 @@ public class Enemy2D : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         rend.material.color = Color.red;
-        currentHP -= 1;
+        currentHP -= Player2D.Damage;
         StartCoroutine(DelayedAction());
     }
             

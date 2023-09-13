@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Coin : MonoBehaviour
 {
-
+    public Text coinText;
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +21,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            GameManager.Instance.count += 100;
             Destroy(this.gameObject);
         }
     }
