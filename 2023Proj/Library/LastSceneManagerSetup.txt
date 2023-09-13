@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Resources/Scenes/06_2DProj.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
