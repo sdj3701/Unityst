@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Resources/Scenes/06_2DProj.unity
+- path: Assets/Resources/Scenes/07_3DAni.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

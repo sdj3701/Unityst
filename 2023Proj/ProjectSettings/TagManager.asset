@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Sphere
   - Enemy
+  - Sword
+  - Cube
   layers:
   - Default
   - TransparentFX
