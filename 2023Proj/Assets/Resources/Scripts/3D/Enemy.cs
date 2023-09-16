@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Enemy : MonoBehaviour
     float speed = 5.0f;
     public GameObject objSword = null;
     GameObject target;
+    bool isLife = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +24,28 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.transform.position - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+        Move_1();
+    }
+
+    void Move_1()
+    {
+        if(!isLife)
+        {
+            Vector3 direction = target.transform.position - transform.position;
+            transform.Translate(direction.normalized * speed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 direction = new Vector3(0,0,0);
+            transform.Translate(direction.normalized * speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Sword")
         {
+            isLife = true;
             spartanKing.Play("diehard");
             StartCoroutine(DieToIDestroy());
         }
