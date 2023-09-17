@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     {
         if (spartanKing["attack"].enabled == true) yield break;
 
+        Debug.Log("1");
+
         objSword.SetActive(true);
         spartanKing.wrapMode = WrapMode.Once;
         spartanKing.CrossFade("attack", 0.3f);

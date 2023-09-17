@@ -19,7 +19,7 @@ public class MoveWall : MonoBehaviour
 
     void Death()
     {
-        DestroyImmediate(this.gameObject);
+        Destroy(this.gameObject);
     }
     
 }
