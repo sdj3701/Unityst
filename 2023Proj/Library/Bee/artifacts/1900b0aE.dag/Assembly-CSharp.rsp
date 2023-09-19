@@ -368,6 +368,7 @@
 "Assets/Resources/Scripts/3D/Player.cs"
 "Assets/Resources/Scripts/3D/PlayerControl.cs"
 "Assets/Resources/Scripts/3D/SpawnerEnemy.cs"
+"Assets/Resources/Scripts/Camera/CameraController.cs"
 "Assets/Resources/Scripts/CameraControl.cs"
 "Assets/Resources/Scripts/ChangeSceneTest.cs"
 "Assets/Resources/Scripts/CollisionTest.cs"

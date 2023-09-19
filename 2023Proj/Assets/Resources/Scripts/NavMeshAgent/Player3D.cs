@@ -9,18 +9,26 @@ public class Player3D : MonoBehaviour
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 720.0f;
 
+    CameraController cameraPosition;
+    public Animator animator;
 
     Vector3 moveInput;
+    Vector3 cameraPos;
 
     CharacterController pcController;
-    public Animator animator;
     NavMeshAgent agent;
 
+    public GameObject LBowdHand;
+    public GameObject RSwowrdHand;
+    public GameObject BSwowrd;
+    bool damage = false;
+    bool check = false;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         InitData();
-
+        
     }
 
     private void FixedUpdate()
@@ -31,8 +39,8 @@ public class Player3D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CharacterController_Slerp();
-        NavMesh_Control();
+        CharacterController_Slerp();
+        //NavMesh_Control();
     }
 
     private void NavMesh_Control()
@@ -51,25 +59,71 @@ public class Player3D : MonoBehaviour
     private void CharacterController_Slerp()
     {
         moveInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        //카메라가 바라보는 방향
+        Vector3 forwarDirection = Camera.main.transform.forward;
+        forwarDirection.y = 0;
+
         if (moveInput.sqrMagnitude > 0.01f)
         {
-            Vector3 forword = Vector3.Slerp(transform.forward, moveInput, rotationSpeed * Time.deltaTime / Vector3.Angle(transform.forward, moveInput));
+            //카메라가 회전을 하면 캐릭터도 회전하게 하는 변수
+            Vector3 moveDirection = Quaternion.LookRotation(forwarDirection) * moveInput;
+            Vector3 forword = Vector3.Slerp(transform.forward, forwarDirection, rotationSpeed * Time.deltaTime / Vector3.Angle(transform.forward, forwarDirection));
             transform.LookAt(transform.position + forword);
+
+            pcController.Move(moveDirection * moveSpeed * Time.deltaTime + Physics.gravity * Time.deltaTime);
+
         }
         else
         {
 
         }
-
         animator.SetFloat("Speed", pcController.velocity.magnitude);
-        pcController.Move(moveInput * moveSpeed * Time.deltaTime + Physics.gravity * Time.deltaTime);
 
- 
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (!check)
+            {
+                LBowdHand.SetActive(false);
+                BSwowrd.SetActive(false);
+                RSwowrdHand.SetActive(true);
+                animator.SetTrigger("Pull");
+                check = true;
+            }
+            else
+            {
+                LBowdHand.SetActive(true);
+                BSwowrd.SetActive(true);
+                RSwowrdHand.SetActive(false);
+                animator.SetTrigger("Putin");
+                check = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Draw");
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!check)
+            {
+                animator.SetTrigger("BAttack");
+            }
+            else
+            {
+                animator.SetTrigger("SAttack");
+            }
+        }
+
     }
     private void InitData()
     {
         pcController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        cameraPosition = FindObjectOfType<CameraController>();
     }
 }
