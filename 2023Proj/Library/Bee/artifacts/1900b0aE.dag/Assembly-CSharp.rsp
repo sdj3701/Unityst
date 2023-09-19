@@ -379,6 +379,8 @@
 "Assets/Resources/Scripts/GameManager.cs"
 "Assets/Resources/Scripts/LookAt.cs"
 "Assets/Resources/Scripts/Move.cs"
+"Assets/Resources/Scripts/NavMeshAgent/Enemy3D.cs"
+"Assets/Resources/Scripts/NavMeshAgent/Player3D.cs"
 "Assets/Resources/Scripts/RayCastEx.cs"
 "Assets/Resources/Scripts/Rotate.cs"
 "Assets/unity-chan!/Unity-chan! Model/Scripts/AutoBlink.cs"
