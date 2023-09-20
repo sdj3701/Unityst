@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemBox : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name == "Player")
+        if (other.gameObject.name == "Player")
         {
             Destroy(this.gameObject);
         }
