@@ -18,6 +18,9 @@ public class Player3D : MonoBehaviour
     CharacterController pcController;
     NavMeshAgent agent;
 
+    public AudioClip audioClip = null;
+    private AudioSource audioSource =null;
+
     public GameObject LBowdHand;
     public GameObject RSwowrdHand;
     public GameObject BSwowrd;
@@ -28,7 +31,8 @@ public class Player3D : MonoBehaviour
     void Awake()
     {
         InitData();
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
     }
 
     private void FixedUpdate()
@@ -55,9 +59,20 @@ public class Player3D : MonoBehaviour
                 agent.SetDestination(hit.point);
             }
         }
+
     }
+
     private void CharacterController_Slerp()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(Cursor.visible)
+                Cursor.visible = false;
+            else
+                Cursor.visible = true;
+
+        }
+
         moveInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         //카메라가 바라보는 방향
@@ -72,11 +87,12 @@ public class Player3D : MonoBehaviour
             transform.LookAt(transform.position + forword);
 
             pcController.Move(moveDirection * moveSpeed * Time.deltaTime + Physics.gravity * Time.deltaTime);
+            PlaySound(audioClip);
 
         }
         else
         {
-
+            StopSound();
         }
         animator.SetFloat("Speed", pcController.velocity.magnitude);
 
@@ -119,11 +135,26 @@ public class Player3D : MonoBehaviour
         }
 
     }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource.isPlaying) return;
+        audioSource.PlayOneShot(clip);
+    }
+
+    private void StopSound()
+    {
+        audioSource.Stop();
+    }
+
     private void InitData()
     {
         pcController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         cameraPosition = FindObjectOfType<CameraController>();
+        audioSource = GetComponent<AudioSource>();
+
+        audioClip = Resources.Load(string.Format("Sound/Foot/{0}", "army")) as AudioClip;
     }
 }
