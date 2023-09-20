@@ -9,7 +9,7 @@ public class ItemBox : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

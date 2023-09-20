@@ -21,7 +21,6 @@ public class Enemy3D : MonoBehaviour
     void Update()
     {
         agent.destination = target.transform.position;
-
     }
 
     private void OnDrawGizmos()
