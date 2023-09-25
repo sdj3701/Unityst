@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public string nextSceneName;
+
 }
 #region ≥Î∆Æ
 /*

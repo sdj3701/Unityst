@@ -83,7 +83,6 @@ public class CollisionTest : MonoBehaviour
         GameObject hitObject = other.gameObject;
         print("Trigger 面倒 " + hitObject.name + " 客 面倒 场.");
     }
-
 }
 
 #region 畴飘

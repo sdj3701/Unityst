@@ -12,6 +12,33 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/05_FlappyBird.unity
     guid: fdac54ce460930c47966a0aaeab6070c
   - enabled: 1
+    path: Assets/Resources/Scenes/06_2DProj.unity
+    guid: 9054ecfa283e1b34daa4915b69ff1ee9
+  - enabled: 1
+    path: Assets/Resources/Scenes/07_3DAni.unity
+    guid: 1fdd53640cd8e1e49a7578292ca25e4d
+  - enabled: 1
+    path: Assets/Resources/Scenes/08_Mecanim.unity
+    guid: 20d2f7ebf797cdf46a463094e40cb5fd
+  - enabled: 1
+    path: Assets/Resources/Scenes/09_NavMeshAgent.unity
+    guid: 5004978fa0a66f142be7d48312c0ecbc
+  - enabled: 1
+    path: Assets/Resources/Scenes/10_SaveLoad.unity
+    guid: a42934bd0a6f8ab49b0c50eafb1f489e
+  - enabled: 1
+    path: Assets/Resources/Scenes/11_Json.unity
+    guid: be2620d5682c62444bfdd4eff04b3fe3
+  - enabled: 1
+    path: Assets/Resources/Scenes/12_IK.unity
+    guid: 844b7091f2b1a104b823b5a3bb795352
+  - enabled: 1
+    path: Assets/Resources/Scenes/13_Title.unity
+    guid: 9758db459e7f76846be6bb1024309a71
+  - enabled: 1
+    path: Assets/Resources/Scenes/14_Loading.unity
+    guid: dbf99601df5869f4aac4c0b35b345ecd
+  - enabled: 1
     path: Assets/Resources/Scenes/99_End.unity
     guid: c46e3112f56d16b4d89b4a50c02d1629
   m_configObjects: {}
